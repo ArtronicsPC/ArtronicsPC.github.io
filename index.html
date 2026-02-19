@@ -56,12 +56,42 @@ padding:0 24px 24px 24px;
        ========================= */
 
     header{
-      /* Centers only the header text */
-      text-align:center;
 
-      /* Space under header */
-      padding:10px 16px 6px 16px;
-    }
+  /* Allows menu button to be positioned inside header */
+  position:relative;
+
+
+
+  /* Keeps title and text centered */
+  text-align:center;
+
+
+
+  /* Adjust spacing */
+  padding:10px 16px 6px 16px;
+
+}
+
+
+
+/* Positions the menu button inside the header */
+
+header .menu-btn{
+
+  position:absolute;
+
+
+
+  /* Distance from left side */
+  left:0;
+
+
+
+  /* Vertical alignment */
+  top:10px;
+
+}
+
 
     header h1{
       margin:0;
@@ -403,7 +433,6 @@ padding:0 24px 24px 24px;
 
 <body>
   <!-- Top-left hamburger button -->
-  <div class="topbar">
     <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
       <div class="hamburger">
         <span></span><span></span><span></span>
@@ -439,11 +468,20 @@ padding:0 24px 24px 24px;
     <!-- =========================
          Header (top of the page)
          ========================= -->
-    <header>
-      <h1>ArtronicsPC</h1>
-      <p>Custom Gaming PCs built and sold in the UK</p>
-      <hr>
-    </header>
+<header>
+
+  <!-- Menu button inside header -->
+  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </button>
+
+  <h1>ArtronicsPC</h1>
+  <p>Custom Gaming PCs built and sold in the UK</p>
+  <hr>
+
+</header>
 
 
 
