@@ -18,9 +18,8 @@
       /* Removes default browser spacing */
       margin:0;
 
-     /* Removes space at the top but keeps space on sides and bottom */
-padding:0 24px 24px 24px;
-
+      /* Removes space at the top but keeps space on sides and bottom */
+      padding:0 24px 24px 24px;
 
       /* Text colour + font */
       color:white;
@@ -57,41 +56,37 @@ padding:0 24px 24px 24px;
 
     header{
 
-  /* Allows menu button to be positioned inside header */
-  position:relative;
+      /* Allows menu button to be positioned inside header */
+      position:relative;
+
+      /* Keeps title and text centered */
+      text-align:center;
+
+      /* Adjust spacing */
+      padding:10px 16px 6px 16px;
+
+    }
 
 
 
-  /* Keeps title and text centered */
-  text-align:center;
+    /* Positions the menu button inside the header */
+    header .menu-btn{
 
+      position:absolute;
 
+      /* Distance from left side */
+      left:0;
 
-  /* Adjust spacing */
-  padding:10px 16px 6px 16px;
+      /* Vertical alignment */
+      top:10px;
 
-}
+      /* Makes sure it's above the sidebar + clickable */
+      z-index:10000;
 
+      /* NEW — ensures clicks always go to the button */
+      pointer-events:auto;
 
-
-/* Positions the menu button inside the header */
-
-header .menu-btn{
-
-  position:absolute;
-
-
-
-  /* Distance from left side */
-  left:0;
-
-  /* Vertical alignment */
-  top:10px;
-
-/* NEW — makes sure it's above the sidebar */
-  z-index:10000;
-
-}
+    }
 
 
     header h1{
@@ -293,6 +288,8 @@ header .menu-btn{
        Sidebar (hamburger menu)
        ========================= */
 
+    /* NOTE: topbar not used now (hamburger is inside header),
+       but leaving it doesn't hurt anything */
     .topbar{
       display:flex;
       align-items:center;
@@ -312,10 +309,23 @@ header .menu-btn{
       display:flex;
       align-items:center;
       justify-content:center;
+
+      /* NEW — smooth hover + glow */
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
     }
 
+    /* NEW — green glow + lift on hover (like listings) */
     .menu-btn:hover{
-      border-color: rgba(0,255,204,0.25);
+      transform: translateY(-2px);
+      border-color: rgba(0,255,204,0.45);
+      box-shadow: 0 0 0 2px rgba(0,255,204,0.10), 0 12px 30px rgba(0,0,0,0.35);
+      filter: brightness(1.05);
+    }
+
+    /* NEW — when menu is open, keep a nice glow so it feels “active” */
+    .menu-btn.active{
+      border-color: rgba(0,255,204,0.55);
+      box-shadow: 0 0 0 2px rgba(0,255,204,0.14), 0 14px 40px rgba(0,0,0,0.45);
     }
 
     .hamburger{
@@ -324,47 +334,43 @@ header .menu-btn{
       position:relative;
     }
 
-.hamburger span{
+    .hamburger span{
 
-  /* Each line is positioned inside the hamburger box */
-  position:absolute;
-  left:0;
-  right:0;
+      /* Each line is positioned inside the hamburger box */
+      position:absolute;
+      left:0;
+      right:0;
 
-  height:2px;
-  background: rgba(255,255,255,0.85);
-  border-radius:2px;
+      height:2px;
+      background: rgba(255,255,255,0.85);
+      border-radius:2px;
 
-
-
-  /* NEW — makes the change animate smoothly */
-  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
-
-}
+      /* Makes the change animate smoothly */
+      transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+    }
 
     .hamburger span:nth-child(1){ top:0; }
     .hamburger span:nth-child(2){ top:6px; }
     .hamburger span:nth-child(3){ top:12px; }
 
     /* =========================
-   Hamburger animation
-   Turns into X when menu opens
-   (We add .active to the menu button in JavaScript)
-   ========================= */
+       Hamburger animation
+       Turns into X when menu opens
+       ========================= */
 
-.menu-btn.active .hamburger span:nth-child(1){
-  transform: rotate(45deg);
-  top:6px;
-}
+    .menu-btn.active .hamburger span:nth-child(1){
+      transform: rotate(45deg);
+      top:6px;
+    }
 
-.menu-btn.active .hamburger span:nth-child(2){
-  opacity:0;
-}
+    .menu-btn.active .hamburger span:nth-child(2){
+      opacity:0;
+    }
 
-.menu-btn.active .hamburger span:nth-child(3){
-  transform: rotate(-45deg);
-  top:6px;
-}
+    .menu-btn.active .hamburger span:nth-child(3){
+      transform: rotate(-45deg);
+      top:6px;
+    }
 
 
 
@@ -423,6 +429,7 @@ header .menu-btn{
       border-color: rgba(0,255,204,0.25);
     }
 
+    /* We keep close-row for layout, but we removed the close button */
     .close-row{
       display:flex;
       justify-content:space-between;
@@ -430,6 +437,7 @@ header .menu-btn{
       margin-bottom:12px;
     }
 
+    /* Leaving close-btn CSS in case you want it back later */
     .close-btn{
       background: transparent;
       color:white;
@@ -471,7 +479,9 @@ header .menu-btn{
   <div id="sidebar" class="sidebar">
     <div class="close-row">
       <h3>Menu</h3>
-      <button class="close-btn" onclick="closeMenu()">Close</button>
+
+      <!-- Close button removed.
+           The hamburger turns into X and closes the menu. -->
     </div>
 
     <!-- Contact button (opens email) -->
@@ -493,20 +503,21 @@ header .menu-btn{
     <!-- =========================
          Header (top of the page)
          ========================= -->
-<header>
+    <header>
 
-  <!-- Menu button inside header -->
-  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
-    <div class="hamburger">
-      <span></span><span></span><span></span>
-    </div>
-  </button>
+      <!-- Menu button inside header
+           NOTE: id=menuBtn lets JavaScript target the correct button every time -->
+      <button id="menuBtn" class="menu-btn" onclick="openMenu()" aria-label="Open menu">
+        <div class="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
 
-  <h1>ArtronicsPC</h1>
-  <p>Custom Gaming PCs built and sold in the UK</p>
-  <hr>
+      <h1>ArtronicsPC</h1>
+      <p>Custom Gaming PCs built and sold in the UK</p>
+      <hr>
 
-</header>
+    </header>
 
 
 
@@ -622,36 +633,25 @@ header .menu-btn{
       document.getElementById("popup").classList.remove("active");
     }
 
- function openMenu(){
+    function openMenu(){
+      document.getElementById("sidebar").classList.add("active");
+      document.getElementById("overlay").classList.add("active");
 
-  document.getElementById("sidebar").classList.add("active");
+      /* Only the page moves, not the sidebar */
+      document.getElementById("page").classList.add("menu-open");
 
-  document.getElementById("overlay").classList.add("active");
-
-  /* Only the page moves, not the sidebar */
-  document.getElementById("page").classList.add("menu-open");
-
-
-  /* NEW — animate hamburger into X */
-  document.querySelector(".menu-btn").classList.add("active");
-
+      /* Animate hamburger into X (targets the correct button) */
+      document.getElementById("menuBtn").classList.add("active");
     }
 
     function closeMenu(){
+      document.getElementById("sidebar").classList.remove("active");
+      document.getElementById("overlay").classList.remove("active");
+      document.getElementById("page").classList.remove("menu-open");
 
-  document.getElementById("sidebar").classList.remove("active");
-
-  document.getElementById("overlay").classList.remove("active");
-
-  document.getElementById("page").classList.remove("menu-open");
-
-
-
-  /* NEW — animate hamburger back into ≡ */
-  document.querySelector(".menu-btn").classList.remove("active");
-
-}
-
+      /* Animate hamburger back into ≡ */
+      document.getElementById("menuBtn").classList.remove("active");
+    }
   </script>
 </body>
 
