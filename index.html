@@ -2,202 +2,292 @@
 <html>
 
 <head>
+  <title>ArtronicsPC</title>
 
-<title>ArtronicsPC</title>
+  <!-- Loads a nicer font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =========================
+       1) Page-wide styling
+       ========================= */
 
-<style>
+    body{
+      /* Removes default browser spacing */
+      margin:0;
 
+      /* Adds space around the content */
+      padding:24px;
 
+      /* Text colour + font */
+      color:white;
+      font-family:"Space Grotesk", Arial, sans-serif;
 
-  
-body{
-  margin:0;
-  padding:24px;
-  color:white;
-  font-family:"Space Grotesk", Arial, sans-serif;
-  min-height:100vh;
+      /* Makes sure the page is at least one full screen tall */
+      min-height:100vh;
 
-  background:
-    /* existing main glows */
-    radial-gradient(1200px 600px at 20% -10%, rgba(0,255,204,0.18), transparent 70%),
-    radial-gradient(1000px 500px at 80% 0%, rgba(140,80,255,0.18), transparent 70%),
+      /* Background = layered gradients (big glows + small dots + base) */
+      background:
+        /* Big glow top-left */
+        radial-gradient(1200px 600px at 20% -10%, rgba(0,255,204,0.18), transparent 70%),
 
-    /* NEW smaller faded RGB dots */
-    radial-gradient(400px 300px at 10% 60%, rgba(0,200,255,0.12), transparent 70%),
-    radial-gradient(350px 250px at 90% 70%, rgba(255,0,200,0.10), transparent 70%),
-    radial
+        /* Big glow top-right */
+        radial-gradient(1000px 500px at 80% 0%, rgba(140,80,255,0.18), transparent 70%),
 
-    /* base background */
-    linear-gradient(180deg, #05060a 0%, #0a0a12 100%);
+        /* Smaller faded RGB dots */
+        radial-gradient(400px 300px at 10% 60%, rgba(0,200,255,0.12), transparent 70%),
+        radial-gradient(350px 250px at 90% 70%, rgba(255,0,200,0.10), transparent 70%),
+        radial-gradient(300px 200px at 50% 90%, rgba(0,255,150,0.10), transparent 70%),
 
-  background-repeat:no-repeat;
-}
+        /* Base dark gradient */
+        linear-gradient(180deg, #05060a 0%, #0a0a12 100%);
 
-
-
-
-  
-.pc{
-  background: rgba(17,17,20,0.75);
-  border:1px solid rgba(255,255,255,0.10);
-  padding:18px;
-  width:300px;
-  border-radius:14px;
-  backdrop-filter: blur(6px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.pc:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
-  border-color: rgba(0,255,204,0.25);
-}
-
-.pc h2{
-  margin:6px 0 10px 0;
-}
+      /* Stops backgrounds repeating */
+      background-repeat:no-repeat;
+    }
 
 
 
+    /* =========================
+       2) Header styling
+       ========================= */
 
-  
-button{
-background-color:#00ffcc;
-border:none;
-padding:10px;
-color:black;
-font-weight:bold;
-cursor:pointer;
-border-radius:5px;
-}
+    header{
+      /* Centers only the header text */
+      text-align:center;
 
+      /* Space under header */
+      padding:18px 16px 6px 16px;
+    }
 
-  
-  
-  button:hover{
-background-color:#00ccaa;
-}
+    header h1{
+      margin:0;
+      font-size:44px;
+      letter-spacing:0.5px;
+    }
 
-.pc img{
-width:100%;
-border-radius:8px;
-margin-bottom:10px;
-}
+    header p{
+      margin:8px 0 14px 0;
+      opacity:0.85;
+    }
 
-/* Fullscreen image popup */
-
-.popup{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background-color:rgba(0,0,0,0.9);
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-
-.popup img{
-max-width:90%;
-max-height:90%;
-border-radius:10px;
-}
-
-.popup.active{
-display:flex;
-cursor:pointer;
-}
-
-.container{
-max-width:1000px;
-margin:40px auto;
-display:flex;
-gap:20px;
-justify-content:flex-start;
-flex-wrap:wrap;
-}
+    hr{
+      border:none;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      max-width:720px;
+      margin:0 auto;
+    }
 
 
 
-  
-</style>
+    /* =========================
+       3) Listings layout (container)
+       Centers the group, cards align left inside it
+       ========================= */
 
+    .container{
+      /* Controls how wide the whole "grid area" can be */
+      max-width:1000px;
+
+      /* Centers the container on the page */
+      margin:40px auto;
+
+      /* Makes cards sit side-by-side */
+      display:flex;
+
+      /* Space between cards */
+      gap:20px;
+
+      /* Cards start from the left within the centered container */
+      justify-content:flex-start;
+
+      /* Allows wrapping to the next line on smaller screens */
+      flex-wrap:wrap;
+    }
+
+
+
+    /* =========================
+       4) PC card styling
+       ========================= */
+
+    .pc{
+      background: rgba(17,17,20,0.75);
+      border:1px solid rgba(255,255,255,0.10);
+
+      padding:18px;
+      width:300px;
+      border-radius:14px;
+
+      /* “Glass” blur effect */
+      backdrop-filter: blur(6px);
+
+      /* Smooth hover animation */
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .pc:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+      border-color: rgba(0,255,204,0.25);
+    }
+
+    .pc h2{
+      margin:6px 0 10px 0;
+    }
+
+    .pc img{
+      /* Makes the image fill the card width */
+      width:100%;
+
+      border-radius:8px;
+      margin-bottom:10px;
+    }
+
+
+
+    /* =========================
+       5) Button styling
+       ========================= */
+
+    button{
+      background: linear-gradient(90deg, #00ffcc, #7c5cff);
+      border:none;
+
+      padding:10px 14px;
+      color:black;
+      font-weight:700;
+
+      cursor:pointer;
+      border-radius:10px;
+
+      transition: transform 0.12s ease, filter 0.12s ease;
+    }
+
+    button:hover{
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+
+
+    /* =========================
+       6) Fullscreen image popup
+       ========================= */
+
+    .popup{
+      /* Hidden by default */
+      display:none;
+
+      /* Covers the whole screen */
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+
+      /* Dark overlay */
+      background-color:rgba(0,0,0,0.9);
+
+      /* Centers the popup image */
+      justify-content:center;
+      align-items:center;
+
+      /* Ensures it sits on top of everything */
+      z-index:9999;
+    }
+
+    .popup.active{
+      /* When active, show the popup */
+      display:flex;
+      cursor:pointer;
+    }
+
+    .popup img{
+      max-width:90%;
+      max-height:90%;
+      border-radius:10px;
+
+      /* Shadow so it pops */
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    }
+  </style>
 </head>
 
+
+
 <body>
+  <!-- =========================
+       Header (top of the page)
+       ========================= -->
 
-<header>
-
-<h1>ArtronicsPC</h1>
-
-<p>Custom Gaming PCs Built in the UK</p>
-
-<hr>
-
-</header>
+  <header>
+    <h1>ArtronicsPC</h1>
+    <p>Custom Gaming PCs Built in the UK</p>
+    <hr>
+  </header>
 
 
-  
-  
-<section id="pcs">
 
-  <h2>Available PCs</h2>
+  <!-- =========================
+       PC Listings (main content)
+       ========================= -->
 
-  <div class="container">
+  <section id="pcs">
+    <h2 style="text-align:center;">Available PCs</h2>
 
-    <div class="pc">
+    <div class="container">
+      <div class="pc">
+        <h2>GTX 1660 SUPER Gaming PC</h2>
 
-      <h2>GTX 1660 SUPER Gaming PC</h2>
+        <!-- Clicking the image opens fullscreen popup -->
+        <img src="IMG_3570.jpeg?v=1" alt="PC photo" onclick="openPopup(this.src)">
 
-      <img src="IMG_3570.jpeg?v=1" alt="PC photo" onclick="openPopup(this.src)">
+        <p>Ryzen 5 2600X</p>
+        <p>16GB RAM</p>
+        <p>240GB + 120GB + 512GB SSD</p>
+        <p>Price: £520</p>
 
-      <p>Ryzen 5 2600X</p>
-      <p>16GB RAM</p>
-      <p>240GB + 120GB + 512GB SSD</p>
-      <p>Price: £520</p>
+        <button onclick="alert('Contact ArtronicsPC to buy')">Buy Now</button>
 
-      <button onclick="alert('Contact ArtronicsPC to buy')">Buy Now</button>
+        <br><br>
 
-      <br><br>
-
-      <a href="pc-1660super.html"><button>More details</button></a>
-
+        <!-- Goes to the details page -->
+        <a href="pc-1660super.html"><button>More details</button></a>
+      </div>
     </div>
+  </section>
 
+
+
+  <!-- =========================
+       Fullscreen popup HTML
+       ========================= -->
+
+  <div id="popup" class="popup" onclick="closePopup()">
+    <img id="popup-img" alt="Full size PC photo">
   </div>
 
-</section>
 
 
-  
-  
-
-<div id="popup" class="popup" onclick="closePopup()">
-
-<img id="popup-img">
-
-</div>
+  <!-- =========================
+       JavaScript (popup open/close)
+       ========================= -->
 
   <script>
+    function openPopup(src){
+      document.getElementById("popup").classList.add("active");
+      document.getElementById("popup-img").src = src;
+    }
 
-function openPopup(src){
-document.getElementById("popup").classList.add("active");
-document.getElementById("popup-img").src = src;
-}
-
-function closePopup(){
-document.getElementById("popup").classList.remove("active");
-}
-
-</script>
-
+    function closePopup(){
+      document.getElementById("popup").classList.remove("active");
+    }
+  </script>
 </body>
 
-
 </html>
+
