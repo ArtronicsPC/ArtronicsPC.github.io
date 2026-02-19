@@ -82,11 +82,11 @@
       pointer-events:auto;
     }
 
-    /* NEW: When the menu is open, place the button just OUTSIDE the sidebar */
-    #page.menu-open header .menu-btn{
-      left:244px; /* 240px sidebar width + 8px gap */
-    }
-
+/* When menu is open, keep button near the sidebar edge.
+   Because #page moves right by 240px, we pull the button back left. */
+#page.menu-open header .menu-btn{
+  transform: translateX(-204px); /* 240 - 36px gap = sits close to sidebar */
+}
 
 
     header h1{
