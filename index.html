@@ -324,6 +324,31 @@ header .menu-btn{
     }
 
     .hamburger span{
+      /* =========================
+   Hamburger animation
+   Turns into X when menu opens
+   ========================= */
+
+.menu-btn.active .hamburger span:nth-child(1){
+
+  transform: rotate(45deg);
+  top:6px;
+
+}
+
+.menu-btn.active .hamburger span:nth-child(2){
+
+  opacity:0;
+
+}
+
+.menu-btn.active .hamburger span:nth-child(3){
+
+  transform: rotate(-45deg);
+  top:6px;
+
+}
+
       position:absolute;
       left:0;
       right:0;
@@ -590,20 +615,36 @@ header .menu-btn{
       document.getElementById("popup").classList.remove("active");
     }
 
-    function openMenu(){
-      document.getElementById("sidebar").classList.add("active");
-      document.getElementById("overlay").classList.add("active");
+ function openMenu(){
 
-      /* Only the page moves, not the sidebar */
-      document.getElementById("page").classList.add("menu-open");
+  document.getElementById("sidebar").classList.add("active");
+
+  document.getElementById("overlay").classList.add("active");
+
+  /* Only the page moves, not the sidebar */
+  document.getElementById("page").classList.add("menu-open");
+
+
+  /* NEW — animate hamburger into X */
+  document.querySelector(".menu-btn").classList.add("active");
+
     }
 
     function closeMenu(){
-      document.getElementById("sidebar").classList.remove("active");
-      document.getElementById("overlay").classList.remove("active");
 
-      document.getElementById("page").classList.remove("menu-open");
-    }
+  document.getElementById("sidebar").classList.remove("active");
+
+  document.getElementById("overlay").classList.remove("active");
+
+  document.getElementById("page").classList.remove("menu-open");
+
+
+
+  /* NEW — animate hamburger back into ≡ */
+  document.querySelector(".menu-btn").classList.remove("active");
+
+}
+
   </script>
 </body>
 
