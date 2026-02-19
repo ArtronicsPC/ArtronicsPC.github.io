@@ -114,19 +114,24 @@
        4) PC card styling
        ========================= */
 
-    .pc{
-      background: rgba(17,17,20,0.75);
-      border:1px solid rgba(255,255,255,0.10);
+  .pc{
 
-      padding:18px;
-      width:300px;
-      border-radius:14px;
+  /* THIS FIXES THE WIDTH CALCULATION */
+  box-sizing:border-box;
+
+  background: rgba(17,17,20,0.75);
+  border:1px solid rgba(255,255,255,0.10);
+
+  padding:18px;
+  width:300px;
+
+  border-radius:14px;
 
       /* “Glass” blur effect */
       backdrop-filter: blur(6px);
 
       /* Smooth hover animation */
-      transition: transform 0.3s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .pc:hover{
