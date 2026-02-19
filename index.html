@@ -399,7 +399,31 @@
   cursor:pointer;
 }
 
+
+/* =========================
+   Makes page move when menu opens
+   ========================= */
+
+#page{
+
+  transition: transform 0.25s ease;
+
+}
+
+
+
+/* When menu is open, move page right */
+
+#page.menu-open{
+
+  transform: translateX(280px);
+
+}
+
   </style>
+
+  <div id="page">
+  
 </head>
 
 
@@ -580,17 +604,30 @@ Buy Now
       document.getElementById("popup").classList.remove("active");
     }
 
-    function openMenu(){
+function openMenu(){
+
   document.getElementById("sidebar").classList.add("active");
+
   document.getElementById("overlay").classList.add("active");
+
+  document.getElementById("page").classList.add("menu-open");
+
 }
 
+
+
 function closeMenu(){
+
   document.getElementById("sidebar").classList.remove("active");
+
   document.getElementById("overlay").classList.remove("active");
+
+  document.getElementById("page").classList.remove("menu-open");
+
 }
 
   </script>
+</div>
 </body>
 
 </html>
