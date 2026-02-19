@@ -55,7 +55,6 @@
        ========================= */
 
     header{
-
       /* Allows menu button to be positioned inside header */
       position:relative;
 
@@ -64,29 +63,30 @@
 
       /* Adjust spacing */
       padding:10px 16px 6px 16px;
-
     }
 
 
 
     /* Positions the menu button inside the header */
     header .menu-btn{
-
       position:absolute;
 
-      /* Distance from left side */
+      /* Default (menu closed): top-left of header */
       left:0;
-
-      /* Vertical alignment */
       top:10px;
 
       /* Makes sure it's above the sidebar + clickable */
       z-index:10000;
 
-      /* NEW — ensures clicks always go to the button */
+      /* Ensures clicks always go to the button */
       pointer-events:auto;
-
     }
+
+    /* NEW: When the menu is open, place the button just OUTSIDE the sidebar */
+    #page.menu-open header .menu-btn{
+      left:248px; /* 240px sidebar width + 8px gap */
+    }
+
 
 
     header h1{
@@ -116,22 +116,11 @@
        ========================= */
 
     .container{
-      /* Controls how wide the whole "grid area" can be */
       max-width:1000px;
-
-      /* Centers the container on the page */
       margin:40px auto;
-
-      /* Makes cards sit side-by-side */
       display:flex;
-
-      /* Space between cards */
       gap:20px;
-
-      /* Centers the cards inside the container */
       justify-content:center;
-
-      /* Allows wrapping to the next line on smaller screens */
       flex-wrap:wrap;
     }
 
@@ -142,7 +131,6 @@
        ========================= */
 
     .pc{
-      /* THIS FIXES THE WIDTH CALCULATION */
       box-sizing:border-box;
 
       background: rgba(17,17,20,0.75);
@@ -152,11 +140,8 @@
       width:300px;
 
       border-radius:14px;
-
-      /* “Glass” blur effect */
       backdrop-filter: blur(6px);
 
-      /* Smooth hover animation */
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
@@ -166,14 +151,10 @@
       border-color: rgba(0,255,204,0.25);
     }
 
-    .pc h2{
-      margin:6px 0 10px 0;
-    }
+    .pc h2{ margin:6px 0 10px 0; }
 
     .pc img{
-      /* Makes the image fill the card width */
       width:100%;
-
       border-radius:8px;
       margin-bottom:10px;
     }
@@ -210,29 +191,19 @@
        ========================= */
 
     .popup{
-      /* Hidden by default */
       display:none;
-
-      /* Covers the whole screen */
       position:fixed;
       top:0;
       left:0;
       width:100%;
       height:100%;
-
-      /* Dark overlay */
       background-color:rgba(0,0,0,0.9);
-
-      /* Centers the popup image */
       justify-content:center;
       align-items:center;
-
-      /* Ensures it sits on top of everything */
       z-index:9999;
     }
 
     .popup.active{
-      /* When active, show the popup */
       display:flex;
       cursor:pointer;
     }
@@ -241,8 +212,6 @@
       max-width:90%;
       max-height:90%;
       border-radius:10px;
-
-      /* Shadow so it pops */
       box-shadow: 0 0 30px rgba(0,0,0,0.6);
     }
 
@@ -250,30 +219,21 @@
 
     /* =========================
        Placeholder image style
-       Used when you don't have photos yet
        ========================= */
 
     .placeholder{
-      /* Makes it same width as normal images */
       width:100%;
-
-      /* Sets height of the placeholder box */
       height:180px;
-
       border-radius:12px;
 
-      /* Centers the text inside */
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
 
       font-weight:600;
-
-      /* Text colour */
       color:rgba(255,255,255,0.85);
 
-      /* Background glow effect */
       background:
         radial-gradient(300px 150px at 20% 30%, rgba(0,255,204,0.20), transparent 60%),
         radial-gradient(300px 150px at 80% 60%, rgba(124,92,255,0.18), transparent 60%),
@@ -288,16 +248,6 @@
        Sidebar (hamburger menu)
        ========================= */
 
-    /* NOTE: topbar not used now (hamburger is inside header),
-       but leaving it doesn't hurt anything */
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      gap:12px;
-      margin-bottom:10px;
-    }
-
     .menu-btn{
       width:44px;
       height:44px;
@@ -310,22 +260,31 @@
       align-items:center;
       justify-content:center;
 
-      /* NEW — smooth hover + glow */
+      /* Smooth hover + glow */
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
     }
 
-    /* NEW — green glow + lift on hover (like listings) */
+    /* Green glow + lift on hover (like listings) */
     .menu-btn:hover{
       transform: translateY(-2px);
-      border-color: rgba(0,255,204,0.45);
-      box-shadow: 0 0 0 2px rgba(0,255,204,0.10), 0 12px 30px rgba(0,0,0,0.35);
-      filter: brightness(1.05);
+      border-color: rgba(0,255,204,0.55);
+
+      /* NEW: stronger glow so it feels premium */
+      box-shadow:
+        0 0 0 2px rgba(0,255,204,0.14),
+        0 0 18px rgba(0,255,204,0.18),
+        0 12px 30px rgba(0,0,0,0.35);
+
+      filter: brightness(1.06);
     }
 
-    /* NEW — when menu is open, keep a nice glow so it feels “active” */
+    /* When menu is open, keep a nice glow so it feels “active” */
     .menu-btn.active{
-      border-color: rgba(0,255,204,0.55);
-      box-shadow: 0 0 0 2px rgba(0,255,204,0.14), 0 14px 40px rgba(0,0,0,0.45);
+      border-color: rgba(0,255,204,0.65);
+      box-shadow:
+        0 0 0 2px rgba(0,255,204,0.18),
+        0 0 22px rgba(0,255,204,0.20),
+        0 14px 40px rgba(0,0,0,0.45);
     }
 
     .hamburger{
@@ -335,17 +294,12 @@
     }
 
     .hamburger span{
-
-      /* Each line is positioned inside the hamburger box */
       position:absolute;
       left:0;
       right:0;
-
       height:2px;
       background: rgba(255,255,255,0.85);
       border-radius:2px;
-
-      /* Makes the change animate smoothly */
       transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
     }
 
@@ -353,28 +307,13 @@
     .hamburger span:nth-child(2){ top:6px; }
     .hamburger span:nth-child(3){ top:12px; }
 
-    /* =========================
-       Hamburger animation
-       Turns into X when menu opens
-       ========================= */
-
-    .menu-btn.active .hamburger span:nth-child(1){
-      transform: rotate(45deg);
-      top:6px;
-    }
-
-    .menu-btn.active .hamburger span:nth-child(2){
-      opacity:0;
-    }
-
-    .menu-btn.active .hamburger span:nth-child(3){
-      transform: rotate(-45deg);
-      top:6px;
-    }
+    /* Hamburger animation: turns into X when menu opens */
+    .menu-btn.active .hamburger span:nth-child(1){ transform: rotate(45deg); top:6px; }
+    .menu-btn.active .hamburger span:nth-child(2){ opacity:0; }
+    .menu-btn.active .hamburger span:nth-child(3){ transform: rotate(-45deg); top:6px; }
 
 
 
-    /* The dark overlay behind the sidebar */
     .overlay{
       display:none;
       position:fixed;
@@ -383,11 +322,8 @@
       z-index:9000;
     }
 
-    .overlay.active{
-      display:block;
-    }
+    .overlay.active{ display:block; }
 
-    /* The sidebar panel */
     .sidebar{
       position:fixed;
       top:0;
@@ -406,13 +342,9 @@
       padding:18px;
     }
 
-    .sidebar.active{
-      transform: translateX(0);
-    }
+    .sidebar.active{ transform: translateX(0); }
 
-    .sidebar h3{
-      margin:6px 0 14px 0;
-    }
+    .sidebar h3{ margin:6px 0 14px 0; }
 
     .side-link{
       display:block;
@@ -429,7 +361,6 @@
       border-color: rgba(0,255,204,0.25);
     }
 
-    /* We keep close-row for layout, but we removed the close button */
     .close-row{
       display:flex;
       justify-content:space-between;
@@ -437,33 +368,21 @@
       margin-bottom:12px;
     }
 
-    /* Leaving close-btn CSS in case you want it back later */
-    .close-btn{
-      background: transparent;
-      color:white;
-      border:1px solid rgba(255,255,255,0.12);
-      border-radius:10px;
-      padding:8px 10px;
-      cursor:pointer;
-    }
+    /* Safety: if a close button exists by accident, hide it */
+    .close-btn{ display:none; }
 
 
 
     /* =========================
        Move the PAGE without moving the sidebar
-       (Use margin-left, NOT transform)
        ========================= */
 
     #page{
-      /* Default: not moved */
       margin-left:0;
-
-      /* Smooth move */
       transition: margin-left 0.25s ease;
     }
 
     #page.menu-open{
-      /* Push page right so sidebar doesn't cover it */
       margin-left:240px;  /* matches sidebar width */
     }
   </style>
@@ -479,17 +398,13 @@
   <div id="sidebar" class="sidebar">
     <div class="close-row">
       <h3>Menu</h3>
-
-      <!-- Close button removed.
-           The hamburger turns into X and closes the menu. -->
+      <!-- Close button removed. The hamburger (X) closes the menu. -->
     </div>
 
-    <!-- Contact button (opens email) -->
     <a class="side-link" href="mailto:artronicspc@gmail.com?subject=ArtronicsPC%20Enquiry">
       Contact
     </a>
 
-    <!-- Jump to listings -->
     <a class="side-link" href="#pcs" onclick="closeMenu()">
       View PCs
     </a>
@@ -500,14 +415,11 @@
   <!-- Everything inside #page moves when menu opens -->
   <div id="page">
 
-    <!-- =========================
-         Header (top of the page)
-         ========================= -->
     <header>
 
-      <!-- Menu button inside header
-           NOTE: id=menuBtn lets JavaScript target the correct button every time -->
-      <button id="menuBtn" class="menu-btn" onclick="openMenu()" aria-label="Open menu">
+      <!-- IMPORTANT:
+           toggleMenu() makes the same button OPEN and CLOSE the menu -->
+      <button id="menuBtn" class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
         <div class="hamburger">
           <span></span><span></span><span></span>
         </div>
@@ -521,86 +433,56 @@
 
 
 
-    <!-- =========================
-         PC Listings (main content)
-         ========================= -->
     <section id="pcs">
       <h2 style="text-align:center;">Available PCs</h2>
 
       <div class="container">
 
-        <!-- PC 1 -->
         <div class="pc">
           <h2>GTX 1660 SUPER Gaming PC</h2>
-
-          <!-- Clicking the image opens fullscreen popup -->
           <img src="IMG_3570.jpeg?v=1" alt="PC photo" onclick="openPopup(this.src)">
-
           <p>Ryzen 5 2600X</p>
           <p>16GB RAM</p>
           <p>240GB + 120GB + 512GB SSD</p>
           <p>Price: £520</p>
-
-          <button onclick="window.location.href='mailto:artronicspc@gmail.com?subject=Buying%20a%20PC%20from%20ArtronicsPC'">
-            Buy Now
-          </button>
-
+          <button onclick="window.location.href='mailto:artronicspc@gmail.com?subject=Buying%20a%20PC%20from%20ArtronicsPC'">Buy Now</button>
           <br><br>
-
           <a href="pc-1660super.html"><button>More details</button></a>
         </div>
 
 
 
-        <!-- PC 2 -->
         <div class="pc">
           <h2>RTX 3060Ti Gaming PC</h2>
-
           <p><b>Status:</b> In build</p>
-
           <div class="placeholder">
             Photos coming soon<br>
             (Currently being built)
           </div>
-
           <p>Ryzen 5 5500</p>
           <p>16GB 3600Mhz RAM</p>
           <p>1TB SSD</p>
           <p>Price: £650</p>
-
-          <button onclick="window.location.href='mailto:artronicspc@gmail.com?subject=Buying%20a%20PC%20from%20ArtronicsPC'">
-            Buy Now
-          </button>
-
+          <button onclick="window.location.href='mailto:artronicspc@gmail.com?subject=Buying%20a%20PC%20from%20ArtronicsPC'">Buy Now</button>
           <br><br>
-
           <a href="pc-3060Ti.html"><button>More details</button></a>
         </div>
 
 
 
-        <!-- PC 3 -->
         <div class="pc">
           <h2>RTX 2070 SUPER Gaming PC</h2>
-
           <p><b>Status:</b> In build</p>
-
           <div class="placeholder">
             Photos coming soon<br>
             (Currently being built)
           </div>
-
           <p>Ryzen 5 5600X</p>
           <p>16GB RAM</p>
           <p>1TB SSD</p>
           <p>Price: £750</p>
-
-          <button onclick="window.location.href='mailto:artronicspc@gmail.com?subject=Buying%20a%20PC%20from%20ArtronicsPC'">
-            Buy Now
-          </button>
-
+          <button onclick="window.location.href='mailto:artronicspc@gmail.com?subject=Buying%20a%20PC%20from%20ArtronicsPC'">Buy Now</button>
           <br><br>
-
           <a href="pc-2070super.html"><button>More details</button></a>
         </div>
 
@@ -611,18 +493,12 @@
 
 
 
-  <!-- =========================
-       Fullscreen popup HTML
-       ========================= -->
   <div id="popup" class="popup" onclick="closePopup()">
     <img id="popup-img" alt="Full size PC photo">
   </div>
 
 
 
-  <!-- =========================
-       JavaScript (popup + menu)
-       ========================= -->
   <script>
     function openPopup(src){
       document.getElementById("popup").classList.add("active");
@@ -633,14 +509,24 @@
       document.getElementById("popup").classList.remove("active");
     }
 
+    /* NEW:
+       Toggle = one button does BOTH:
+       open when closed, close when open */
+    function toggleMenu(){
+      const sidebar = document.getElementById("sidebar");
+      if (sidebar.classList.contains("active")){
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
     function openMenu(){
       document.getElementById("sidebar").classList.add("active");
       document.getElementById("overlay").classList.add("active");
-
-      /* Only the page moves, not the sidebar */
       document.getElementById("page").classList.add("menu-open");
 
-      /* Animate hamburger into X (targets the correct button) */
+      /* Animate hamburger into X */
       document.getElementById("menuBtn").classList.add("active");
     }
 
