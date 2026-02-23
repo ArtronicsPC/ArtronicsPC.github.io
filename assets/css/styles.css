@@ -667,3 +667,19 @@
   .pc-grid{ grid-template-columns:1fr; }
   .pc-title{ font-size:28px; }
 }
+
+
+
+
+
+
+
+
+/* Force homepage card images to correct size */
+.card-img{
+  width:100% !important;
+  height:180px !important;
+  object-fit:cover !important;
+  border-radius:8px;
+  display:block;
+}
