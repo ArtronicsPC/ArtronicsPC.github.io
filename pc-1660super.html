@@ -17,47 +17,111 @@ li{ margin:6px 0; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <p><a href="index.html">← Back to listings</a></p>
+ <body>
 
-    <h1>GTX 1660 SUPER Gaming PC</h1>
+<div id="page">
 
-    <div class="card">
-      <p><b>Price:</b> £520</p>
+<header>
 
-      <h3>Photos</h3>
-      <div class="gallery">
-        <img src="IMG_3570.jpeg" alt="PC photo 1">
-        <!-- later add more like: <img src="pc1-side.jpeg" alt="PC photo 2"> -->
-      </div>
-
-     <h3>Full Specs</h3>
-<ul>
-  <li><b>CPU:</b> Ryzen 5 2600X</li>
-  <li><b>GPU:</b> GTX 1660 SUPER</li>
-  <li><b>RAM:</b> 16GB DDR4</li>
-  <li><b>Storage:</b> 240GB + 120GB + 512GB SSD</li>
-  <li><b>Motherboard:</b> (add yours)</li>
-  <li><b>PSU:</b> (add yours)</li>
-  <li><b>Case:</b> (add yours)</li>
-  <li><b>Cooling:</b> (add yours)</li>
-  <li><b>OS:</b> (e.g. Windows 11)</li>
-  <li><b>Wi-Fi:</b> (Yes/No)</li>
-</ul>
-
-<h3>Performance (Estimated)</h3>
-<ul>
-  <li><b>Best for:</b> 1080p gaming</li>
-  <li><b>Esports games:</b> smooth high FPS</li>
-  <li><b>AAA games:</b> medium settings for good FPS</li>
-  <li><b>Note:</b> FPS depends on the game, settings, and updates</li>
-</ul>
-
-
-      <h3>Buying</h3>
-      <button onclick="alert('Contact ArtronicsPC to buy')">Buy Now</button>
-    </div>
+<button id="menuBtn" class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+  <div class="hamburger">
+    <span></span><span></span><span></span>
   </div>
+</button>
+
+<h1>GTX 1660 SUPER Gaming PC</h1>
+<p>Built by ArtronicsPC</p>
+
+<hr>
+
+</header>
+
+
+<section class="container">
+
+<div class="pc" style="width:900px; max-width:95%;">
+
+<img src="IMG_3570.jpeg" style="width:100%; border-radius:12px;" onclick="openPopup(this.src)">
+
+
+<h2>Price: £520</h2>
+
+
+<h3>Full Specifications</h3>
+
+<p><b>CPU:</b> Ryzen 5 2600X</p>
+
+<p><b>GPU:</b> GTX 1660 SUPER</p>
+
+<p><b>RAM:</b> 16GB DDR4</p>
+
+<p><b>Storage:</b></p>
+
+<p>• 512GB SSD</p>
+
+<p>• 240GB SSD</p>
+
+<p>• 120GB SSD</p>
+
+
+<h3>Performance</h3>
+
+<p>Fortnite: High settings 1080p</p>
+
+<p>Warzone: Medium-High 1080p</p>
+
+<p>Valorant / CS2: Very high FPS</p>
+
+
+<h3>Condition</h3>
+
+<p>Cleaned and fully tested</p>
+
+<p>Temps checked and stable</p>
+
+<p>Ready to use</p>
+
+
+<br>
+
+
+<button onclick="window.location.href='mailto:artronicspc@gmail.com?subject=Buying GTX 1660 SUPER PC'">
+
+Buy This PC
+
+</button>
+
+
+<br><br>
+
+
+<a href="index.html">
+
+<button>
+
+← Back to listings
+
+</button>
+
+</a>
+
+
+</div>
+
+</section>
+
+</div>
+
+
+
+<div id="popup" class="popup" onclick="closePopup()">
+<img id="popup-img">
+</div>
+
+
+<script src="assets/js/main.js"></script>
+
+</body>
 </body>
 </html>
 
