@@ -142,12 +142,20 @@
 
     .pc h2{ margin:6px 0 10px 0; }
 
-    .pc img{
-      width:100%;
-      border-radius:8px;
-      margin-bottom:10px;
-    }
+.pc-hero-right{
+  max-width:520px;   /* stops the image column getting too wide */
+  width:100%;
+}
 
+.pc-main-img{
+  width:100%;
+  height:auto;
+  max-height:360px;  /* stops it getting too tall */
+  object-fit:cover;  /* crops nicely instead of stretching */
+  border-radius:12px;
+  cursor:pointer;
+  display:block;
+}
 
 
     /* =========================
