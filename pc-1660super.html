@@ -16,112 +16,126 @@ li{ margin:6px 0; }
 
   </style>
 </head>
+
 <body>
- <body>
+<!-- Overlay + Sidebar (same as your index) -->
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+<div id="sidebar" class="sidebar">
+  <div class="close-row">
+    <h3>Menu</h3>
+  </div>
+
+  <a class="side-link" href="mailto:artronicspc@gmail.com?subject=ArtronicsPC%20Enquiry">
+    Contact
+  </a>
+
+  <a class="side-link" href="index.html#pcs" onclick="closeMenu()">
+    View PCs
+  </a>
+</div>
 
 <div id="page">
 
-<header>
+  <header>
+    <button id="menuBtn" class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </button>
 
-<button id="menuBtn" class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
-  <div class="hamburger">
-    <span></span><span></span><span></span>
-  </div>
-</button>
+    <h1>ArtronicsPC</h1>
+    <p>Custom Gaming PCs built and sold in the UK</p>
+    <hr>
+  </header>
 
-<h1>GTX 1660 SUPER Gaming PC</h1>
-<p>Built by ArtronicsPC</p>
+  <main class="pc-page">
 
-<hr>
+    <section class="pc-hero glass">
+      <div class="pc-hero-left">
+        <h1 class="pc-title">GTX 1660 SUPER Gaming PC</h1>
+        <p class="pc-subtitle">Great 1080p gaming • Clean build • Fully tested</p>
 
-</header>
+        <div class="pc-price-row">
+          <div class="pc-price">£520</div>
+          <div class="pc-badge">Available</div>
+        </div>
 
+        <div class="pc-cta-row">
+          <a class="btn primary"
+             href="mailto:artronicspc@gmail.com?subject=Buying%20GTX%201660%20SUPER%20PC%20(ArtronicsPC)&body=Hi%2C%20I%27m%20interested%20in%20the%20GTX%201660%20SUPER%20PC.%0A%0AName%3A%0ACity%3A%0APickup%2Fdelivery%3A%0AQuestions%3A">
+            Buy Now
+          </a>
 
-<section class="container">
+          <a class="btn" href="index.html#pcs">Back to listings</a>
+        </div>
 
-<div class="pc" style="width:900px; max-width:95%;">
+        <ul class="bullets" style="margin-top:14px;">
+          <li>Cleaned + dust removed</li>
+          <li>Stress tested (temps checked)</li>
+          <li>Ready to use</li>
+        </ul>
+      </div>
 
-<img src="IMG_3570.jpeg" style="width:100%; border-radius:12px;" onclick="openPopup(this.src)">
+      <div class="pc-hero-right">
+        <img class="pc-main-img" src="IMG_3570.jpeg?v=1" alt="GTX 1660 SUPER PC photo" onclick="openPopup(this.src)">
+        <p class="small-note">Click the image to view fullscreen</p>
+      </div>
+    </section>
 
+    <section class="pc-grid">
 
-<h2>Price: £520</h2>
+      <div class="pc-card glass">
+        <h2>Full Specs</h2>
+        <table class="spec-table">
+          <tr><td>CPU</td><td>Ryzen 5 2600X</td></tr>
+          <tr><td>GPU</td><td>GTX 1660 SUPER</td></tr>
+          <tr><td>RAM</td><td>16GB DDR4</td></tr>
+          <tr><td>Storage</td><td>512GB SSD + 240GB SSD + 120GB SSD</td></tr>
+          <tr><td>OS</td><td>(Put Windows / no OS here)</td></tr>
+        </table>
+      </div>
 
+      <div class="pc-card glass">
+        <h2>Performance (1080p)</h2>
+        <ul class="bullets">
+          <li>Fortnite: High settings</li>
+          <li>Warzone: Medium–High (game updates change performance)</li>
+          <li>Valorant / CS2: High FPS esports</li>
+        </ul>
+        <p class="small-note" style="margin-top:10px;">Later we can add real benchmark screenshots.</p>
+      </div>
 
-<h3>Full Specifications</h3>
+      <div class="pc-card glass">
+        <h2>Condition</h2>
+        <ul class="bullets">
+          <li>Fully cleaned and tested</li>
+          <li>Stable temperatures under load</li>
+          <li>Any cosmetic marks: (add here)</li>
+        </ul>
+      </div>
 
-<p><b>CPU:</b> Ryzen 5 2600X</p>
+      <div class="pc-card glass">
+        <h2>Pickup / Delivery</h2>
+        <ul class="bullets">
+          <li>Pickup: Leeds</li>
+          <li>Delivery: (yes/no + details)</li>
+          <li>Returns: (your policy)</li>
+        </ul>
+      </div>
 
-<p><b>GPU:</b> GTX 1660 SUPER</p>
+    </section>
 
-<p><b>RAM:</b> 16GB DDR4</p>
-
-<p><b>Storage:</b></p>
-
-<p>• 512GB SSD</p>
-
-<p>• 240GB SSD</p>
-
-<p>• 120GB SSD</p>
-
-
-<h3>Performance</h3>
-
-<p>Fortnite: High settings 1080p</p>
-
-<p>Warzone: Medium-High 1080p</p>
-
-<p>Valorant / CS2: Very high FPS</p>
-
-
-<h3>Condition</h3>
-
-<p>Cleaned and fully tested</p>
-
-<p>Temps checked and stable</p>
-
-<p>Ready to use</p>
-
-
-<br>
-
-
-<button onclick="window.location.href='mailto:artronicspc@gmail.com?subject=Buying GTX 1660 SUPER PC'">
-
-Buy This PC
-
-</button>
-
-
-<br><br>
-
-
-<a href="index.html">
-
-<button>
-
-← Back to listings
-
-</button>
-
-</a>
-
+  </main>
 
 </div>
 
-</section>
-
-</div>
-
-
-
+<!-- Popup (same system as homepage) -->
 <div id="popup" class="popup" onclick="closePopup()">
-<img id="popup-img">
+  <img id="popup-img" alt="Full size PC photo">
 </div>
-
 
 <script src="assets/js/main.js"></script>
-
-</body>
 </body>
 </html>
 
