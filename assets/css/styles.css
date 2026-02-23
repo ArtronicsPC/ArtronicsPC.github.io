@@ -39,6 +39,14 @@
 
 
 
+
+
+
+
+
+
+
+
     /* =========================
        2) Header styling
        ========================= */
@@ -53,6 +61,15 @@
       /* Adjust spacing */
       padding:10px 16px 6px 16px;
     }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -76,6 +93,16 @@
 #page.menu-open header .menu-btn{
   transform: translateX(-47px); /* 150 - 36px gap = sits close to sidebar */
 }
+
+
+
+
+
+
+
+
+
+
 
 
     header h1{
@@ -115,6 +142,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
     /* =========================
        4) PC card styling
        ========================= */
@@ -141,6 +178,15 @@
     }
 
     .pc h2{ margin:6px 0 10px 0; }
+/* Homepage card images: keep them tidy and consistent */
+.pc img{
+  width:100%;
+  height:180px;      /* controls the card image height */
+  object-fit:cover;  /* crops nicely instead of stretching */
+  border-radius:8px;
+  margin-bottom:10px;
+  display:block;
+}
 
 .pc-hero-right{
   max-width:520px;   /* stops the image column getting too wide */
@@ -156,6 +202,17 @@
   cursor:pointer;
   display:block;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
     /* =========================
@@ -180,6 +237,14 @@
       transform: translateY(-1px);
       filter: brightness(1.05);
     }
+
+
+
+
+
+
+
+
 
 
 
@@ -214,6 +279,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     /* =========================
        Placeholder image style
        ========================= */
@@ -238,6 +314,16 @@
 
       border:1px solid rgba(255,255,255,0.10);
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -370,6 +456,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /* =========================
        Move the PAGE without moving the sidebar
        ========================= */
@@ -382,6 +483,24 @@
     #page.menu-open{
       margin-left:240px;  /* matches sidebar width */
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* =========================
    PRODUCT / DETAILS PAGE
