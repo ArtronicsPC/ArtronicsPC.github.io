@@ -182,8 +182,9 @@
 .pc img{
   width:100%;
   height:180px;      /* controls the card image height */
-  object-fit:cover;  /* crops nicely instead of stretching */
-  border-radius:8px;
+  object-fit:contain;  /* crops nicely instead of stretching */
+  background: rgba(255,255,255,0.03);
+    border-radius:8px;
   margin-bottom:10px;
   display:block;
 }
